@@ -7,8 +7,8 @@ contract RequireTest {
 
     address admin;
 
-    constructor(address admin_) {
-        admin = admin_;
+    constructor(address _admin) {
+        admin = _admin;
     }
 
     function checkAdminWithIf() public view{
