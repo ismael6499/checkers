@@ -7,11 +7,13 @@ pragma solidity 0.8.24;
 contract RequireTest {
 
     error CallerIsNotAdmin(address caller);
+    error InvalidAddress();
 
     address public admin;
 
     constructor(address _admin) {
-        require(_admin != address(0), "Invalid admin address");
+        // Optimization: Use Custom Error instead of require string for deployment gas savings
+        if (_admin == address(0)) revert InvalidAddress();
         admin = _admin;
     }
 
